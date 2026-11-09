@@ -19,41 +19,52 @@
         }
         .container {
             max-width: 600px;
+            width: 100%;
             background: rgba(0, 0, 0, 0.4);
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(10px);
+            text-align: center;
         }
         h1 {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 25px;
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #fbc531;
             border-bottom: 2px solid rgba(255, 255, 255, 0.3);
             padding-bottom: 10px;
         }
-        .section {
-            margin-bottom: 25px;
+        .page {
+            display: none;
+        }
+        .page.active {
+            display: block;
+        }
+        p {
+            line-height: 1.8;
+            font-size: 16px;
+            margin: 20px 0;
+            text-align: left;
             background: rgba(255, 255, 255, 0.1);
-            padding: 15px 20px;
+            padding: 20px;
             border-radius: 10px;
             border-left: 4px solid #fbc531;
         }
-        h3 {
-            margin-top: 0;
-            color: #fbc531;
-            font-size: 18px;
-        }
-        p {
-            line-height: 1.6;
+        button {
+            background-color: #fbc531;
+            color: #333;
+            border: none;
+            padding: 10px 25px;
             font-size: 15px;
-            margin: 0;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
         }
-        .footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 13px;
-            color: #f5f6fa;
+        button:hover {
+            background-color: #e84118;
+            color: #fff;
         }
     </style>
 </head>
@@ -62,34 +73,45 @@
     <div class="container">
         <h1>✨ Pesan Spesial Untuk Kamu ✨</h1>
 
-        <!-- Bagian 1 -->
-        <div class="section">
+        <!-- Halaman 1 -->
+        <div class="page active" id="page-1">
             <h3>Bagian 1: Jarak yang Memisahkan</h3>
             <p>Meskipun raga kita belum pernah dipertemukan dalam satu ruang dan waktu yang sama, nyatanya rasa ini tumbuh begitu nyata di dalam dada. Jarak dan bentangan kilometer hanyalah angka, karena hatiku selalu bisa menemukan jalan untuk merasa dekat denganmu setiap hari.</p>
+            <button onclick="nextPage(2)">Lanjut ➡️</button>
         </div>
 
-        <!-- Bagian 2 -->
-        <div class="section">
+        <!-- Halaman 2 -->
+        <div class="page" id="page-2">
             <h3>Bagian 2: Sederhana yang Berarti</h3>
             <p>Obrolan kita, tawa kecil lewat pesan, dan suara yang menyapa di kala penat adalah alasan mengapa hari-hariku selalu terasa lebih baik. Terima kasih sudah hadir, menjadi tempatku berkeluh kesah, dan membuatku menantikan hari esok dengan senyuman.</p>
+            <button onclick="nextPage(3)">Lanjut ➡️</button>
         </div>
 
-        <!-- Bagian 3 -->
-        <div class="section">
+        <!-- Halaman 3 -->
+        <div class="page" id="page-3">
             <h3>Bagian 3: Harapan untuk Bertemu</h3>
             <p>Ada satu doa yang tidak pernah terlewatkan setiap malam—semoga takdir segera melangkah pada waktunya, mempertemukan kita dalam dekap hangat yang selama ini hanya bisa kita bayangkan dalam angan.</p>
+            <button onclick="nextPage(4)">Lanjut ➡️</button>
         </div>
 
-        <!-- Bagian 4 -->
-        <div class="section">
+        <!-- Halaman 4 -->
+        <div class="page" id="page-4">
             <h3>Bagian 4: Ketulusan Hati</h3>
-            <p>Sampai hari pertemuan itu tiba, tetaplah disini menemaniku. Perasaan ini tulus apa adanya, tumbuh bukan karena kita sering bersua, tapi karena hati ini tahu kamu adalah rumah tempat singgah paling nyaman.</p>
-        </div>
-
-        <div class="footer">
-            <p>Dibuat dengan ❤️ khusus untukmu.</p>
+            <p>Sampai hari pertemuan itu tiba, tetaplah disini menemaniku. Perasaan ini tulus apa adanya, tumbuh bukan karena kita sering bersua, tapi karena hati ini tahu kamu adalah rumah tempat singgah paling nyaman. ❤️</p>
+            <button onclick="nextPage(1)">🔄 Ulang dari Awal</button>
         </div>
     </div>
+
+    <script>
+        function nextPage(pageNum) {
+            // Sembunyikan semua halaman
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Tampilkan halaman yang dipilih
+            document.getElementById('page-' + pageNum).classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
